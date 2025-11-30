@@ -1,0 +1,28 @@
+/* Contenedor de la lista de tareas */
+.filteredTaskContainer {
+    margin-top: 1.5rem;
+}
+
+/* Mensaje cuando no hay tareas */
+.filteredTaskContainer h3 {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 3rem 1rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Animación para la lista completa */
+.filteredTaskContainer {
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
