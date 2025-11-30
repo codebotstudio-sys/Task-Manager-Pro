@@ -70,6 +70,16 @@ export default function TaskItem({ task }) {
         setIsEditing(false);
     };
 
+    const isTaskDueSoon = (dueDate) => {
+        if (!dueDate) return false;
+        const now = new Date();
+        const due = new Date(dueDate);
+        const hoursUntilDue = (due - now) / (1000 * 60 * 60);
+        return hoursUntilDue > 0 && hoursUntilDue <= 24;
+    };
+
+    const isDueSoon = isTaskDueSoon(task.dueDate);
+
     if (isEditing) {
         return (
             <div className={styles.taskItemContainer}>
@@ -116,7 +126,7 @@ export default function TaskItem({ task }) {
     }
 
     return (
-        <div className={styles.taskItemContainer}>
+        <div className={`${styles.taskItemContainer} ${isDueSoon ? styles.urgent : ''}`}>
             <input
                 type="checkbox"
                 checked={task.completed}
@@ -124,7 +134,10 @@ export default function TaskItem({ task }) {
             />
 
             <div className={styles.taskContent} onClick={() => setIsExpanded(!isExpanded)}>
-                <h3>{task.title}</h3>
+                <h3>
+                    {isDueSoon && <span className={styles.urgentIcon}>⚠️</span>}
+                    {task.title}
+                </h3>
 
                 {isExpanded && (
                     <div className={styles.taskDetails}>

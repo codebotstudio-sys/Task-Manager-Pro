@@ -198,6 +198,28 @@
     cursor: pointer;
 }
 
+.urgent {
+    border-color: #ef4444 !important;
+    background: #fef2f2;
+}
+
+.urgentIcon {
+    margin-right: 0.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
 /* Animación de entrada */
 @keyframes slideIn {
     from {

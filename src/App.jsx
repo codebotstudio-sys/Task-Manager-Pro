@@ -3,7 +3,10 @@ import FilterBar from "./components/FilterBar/FilterBar";
 import TaskList from "./components/TaskList/TaskList";
 import styles from "./App.module.css";
 import SortControls from "./components/SortControls/SortControls";
+import useNotifications from "./hooks/useNotifications";
+
 function App() {
+  useNotifications();
 
   return (
     <div className={styles.AppContainer}>
