@@ -2,6 +2,8 @@ import useTaskStore from "../../Store/taskStore.js";
 import TaskItem from "../TaskItem/TaskItem.jsx";
 import styles from "./TaskList.module.css";
 
+// Componente TaskList
+
 export default function TaskList() {
     const tasks = useTaskStore((state) => state.tasks);
     const filter = useTaskStore((state) => state.filter);
