@@ -7,6 +7,8 @@ const useTaskStore = create(
       tasks: [], // Array de tareas
       filter: "all", // 'all', 'active', 'completed'
       searchTerm: "", // String para buscar tareas
+      sortBy: "none",//'none', 'date', 'priority', 'alphabetical'
+      sortOrder: "asc",// 'asc' (ascendente), 'desc' (descendente)
 
       // ========== ACCIONES CRUD ==========
 
@@ -43,7 +45,15 @@ const useTaskStore = create(
       // Limpiar tareas completadas
       clearCompleted: () => set((state) => ({
         tasks: state.tasks.filter((task) => !task.completed)
-      }))
+      })),
+
+      // Cambiar el tipo de ordenamiento
+      setSortBy: (sortType) => set({ sortBy: sortType }),
+
+      // Alternar el orden ascendente/descendente
+      toggleSortOrder: () => set((state) => ({
+        sortOrder: state.sortOrder === 'asc' ? 'desc' : 'asc'
+      })),
     }),
     {
       name: "task-storage", // unique name for localStorage
